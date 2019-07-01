@@ -119,7 +119,7 @@ Produza aqui a sua versão desse texto, portanto:
 
 -----
 
-Regressão foi utilizada para analisar se a quantidade de `docentes` tem uma associação significativa com `produção do programa`. Os resultados da regressão indicam que um modelo com o preditore no formato `produção do programa` = -41 + 5*`docentes` explicam 81,46% da variância da variável de resposta (R2 = 0,8146). A quantidade de `docentes` tem uma relação significativa com a `produção do programa` (b = [4.269955; 5.356786], IC com 95%). O aumento de 1 unidade de na variável `docentes` produz uma mudança de 5 unidades na variável `produção do programa`.
+Regressão foi utilizada para analisar se a quantidade de `docentes` tem uma associação com `produção do programa`. Os resultados da regressão indicam que um modelo com o preditore no formato `produção do programa` = -41 + 5*`docentes` explicam 81,46% da variância da variável de resposta (R2 = 0,8146). A quantidade de `docentes` tem uma relação com a `produção do programa` de (b = [4.269955; 5.356786], IC com 95%). O aumento de 1 unidade na variável `docentes` produz uma mudança de 5 unidades na variável `produção do programa`.
 
 -----
 
@@ -176,8 +176,9 @@ Considerando agora esses três fatores, o que podemos dizer sobre como cada um d
 
 -----
 
-**EXPLICAÇÃO**: *Substitua esse texto por texto feito tal qual o que usamos com uma variável*
+Regressão múltipla foi utilizada para analisar se  as variáveis `docentes`, `mestrados` e `doutorados` apresentam associação com `produção` Os resultados da regressão indicam que um modelo com os 3 preditores no formato `produção` = -14 + 3 * `docentes` - 0 * `mestrados` + 1 * `doutorados` explicam 87,07% da variância da variável de resposta (R2 = 0.8706642). A quantidade de `docentes` é a variável que possui maior relação com a `produção` (b = [2.5827257;4.4166967], IC com 95%), a quantidade de alunos descrita pela variável `doutorados` apresenta uma relação de (b = [0.6355112;1.3660309], IC com 95%). Já a variável `mestrados` apresenta uma relação despesível com `produção` (b = [-0.3577316;-0.0321714], IC com 95%).
 
+O aumento de 1 unidade na variável `docentes` produz uma mudança de 3 unidades na variável `produção`, considerando a variável `doutorados` essa mudança é de 1 unidade.
 -----
 
 
