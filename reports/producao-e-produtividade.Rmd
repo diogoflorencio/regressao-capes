@@ -189,6 +189,18 @@ Diferente de medirmos produção (total produzido), é medirmos produtividade (p
 Produza abaixo o modelo e um texto que comente (i) o modelo, tal como os que fizemos antes, e (ii) as implicações - o que aprendemos sobre como funcionam programas de pós no brasil?.
 
 ```{r}
+cacc_dout <- cacc %>% 
+  filter(tem_doutorado == TRUE)
+modelo0 = lm(produtividade ~ docentes + doutorados_pprof + doutorados + nivel, data = cacc_dout)
+tidy(modelo0, conf.int = TRUE, conf.level = 0.95)
+glance(modelo0)
+```
+
+Regressão múltipla foi utilizada para analisar se  as variáveis `docentes`, `doutorados_pprof`, `doutorados` e `nível` apresentam associação com a `produtividade` Os resultados da regressão indicam que um modelo com os 4 preditores no formato `produtividade` = 4 - 0 *  `docentes` - 0 * `doutorados_pprof` + 0 * `doutorados` + 0 * `nivel4` + 1 * `nivel5` + 2 * `nivel6` + 2 * `nivel7` explicam 52,35% da variância da variável de resposta (R2 = 0.5235582). A variável categorica `nível` possui maior relação com a `produtividade`, enquanto maior o `nível` mais forte a relação. Os níveis 6 e 7 possuem relação de  (b = [-1.02703720;4.162918390] e [0.57683771;4.309201168], IC com 95%) respectivamente. Todas as outras variáveis possuem relação despresível com a `produtividade`.
+
+O aumento de 1 unidade na variável `nìvel`, considerando as categorias 6 e 7, produz uma mudança de 2 unidades na variável `produtividade`, para a categoria `nível5` essa mudança é de 1 unidade.
+
+```{r}
 regEq <- function(lmObj, dig) {
     paste0("y = ",
         paste0(
@@ -200,27 +212,5 @@ regEq <- function(lmObj, dig) {
     )
 }
 
-regEq(modelo2)
-```
-
-```{r}
-cacc %>% 
-  ggplot(aes(x = docentes, y = produtividade)) + 
-  geom_point()
-```
-
-```{r}
-cacc_dout <- cacc %>% filter(tem_doutorado == TRUE)
-modelo1 = lm(produtividade ~ docentes + mestrados_pprof + doutorados_pprof + nivel, data = cacc_dout)
-tidy(modelo1, conf.int = TRUE, conf.level = 0.95)
-glance(modelo1)
-```
-
-```{r}
-cacc_augmented = cacc_dout %>% 
-  add_predictions(modelo1) 
-cacc_augmented %>% 
-  ggplot(aes(x = pred)) + 
-  geom_point(aes(y = produtividade - pred)) + 
-  labs(y = "Erro")
+regEq(modelo0)
 ```
